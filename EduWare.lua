@@ -1,22 +1,9 @@
-local function get(url)
-    local success, result = pcall(function()
-        return game:HttpGet(url)
-    end)
-    return success and result or nil
-end
+loadstring(game:HttpGet("https://github.com/benzonati/Rivals-Anticheat-Bypass/raw/refs/heads/main/main.luau"))()
 
-local anticheat = get("https://github.com/benzonati/Rivals-Anticheat-Bypass/raw/refs/heads/main/main.luau")
-if anticheat then
-    loadstring(anticheat)()
-end
-
-local repo = "https://raw.githubusercontent.com/kzsnlol/kzui/refs/heads/main/"
-local Library = loadstring(get(repo .. "kzuihandler.lua"))
-
-if not Library then
-    local fallbackRepo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
-    Library = loadstring(get(fallbackRepo .. "Library.lua"))
-end
+local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
+local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
+local ThemeManager = loadstring(game:HttpGet(repo .. "addons/ThemeManager.lua"))()
+local SaveManager = loadstring(game:HttpGet(repo .. "addons/SaveManager.lua"))()
 
 local Options = Library.Options
 local Toggles = Library.Toggles
@@ -923,7 +910,7 @@ end)
 local function loadSilentAim()
     if silentAimRunning then return end
     local success, result = pcall(function()
-        return loadstring(get("https://raw.githubusercontent.com/EndOverdosing/Soluna-API/refs/heads/main/rivals-silent-aim.lua"))()
+        return loadstring(game:HttpGet("https://raw.githubusercontent.com/EndOverdosing/Soluna-API/refs/heads/main/rivals-silent-aim.lua"))()
     end)
     if success and result then
         silentAimSettings = result
@@ -944,7 +931,7 @@ end
 local function loadCosmetics()
     if cosmeticsRunning then return end
     local success, result = pcall(function()
-        return loadstring(get("https://pastefy.app/6ElsMLeb/raw"))()
+        return loadstring(game:HttpGet("https://pastefy.app/6ElsMLeb/raw"))()
     end)
     if success and result then
         cosmeticsThread = result
